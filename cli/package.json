@@ -1,0 +1,39 @@
+{
+  "name": "burstjs-examples-cli",
+  "version": "1.0.0",
+  "description": "Collection of burstjs examples for CLI",
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "_b$config": {
+    "apiSettings": {
+      "nodeHost": "http://testnet.getburst.net:6876",
+      "apiRootUrl": "burst"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ohager/burstjs-examples.git"
+  },
+  "keywords": [
+    "burst",
+    "burstjs",
+    "crypto"
+  ],
+  "author": "ohager",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ohager/burstjs-examples/issues"
+  },
+  "homepage": "https://github.com/ohager/burstjs-examples#readme",
+  "dependencies": {
+    "@burstjs/core": "^0.3.0",
+    "@burstjs/util": "^0.3.0",
+    "console.table": "^0.10.0",
+    "inquirer": "^6.4.1"
+  }
+}
