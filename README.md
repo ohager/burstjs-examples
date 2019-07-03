@@ -36,6 +36,8 @@ The following examples are available
 
 ### [List Account Transactions](./cli/list-transactions.js)
 
+> Level: Basic
+
 List the recent transactions of given account and prints in table form to console
 
 #### Used methods:
@@ -46,6 +48,8 @@ List the recent transactions of given account and prints in table form to consol
 	- util/convertAddressToNumericId
 	
 ### [Show Messages](./cli/list-transactions.js)
+
+> Level: Basic
 
 List only the messages of given account and prints in table form.
 Encrypted messages won't be encrypted
