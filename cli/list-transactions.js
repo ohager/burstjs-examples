@@ -1,29 +1,5 @@
-const inquirer = require('inquirer');
-const {composeApi} = require("@burstjs/core");
 const {isBurstAddress, convertAddressToNumericId, convertNQTStringToNumber} = require("@burstjs/util");
-const {_b$config} = require("./package.json");
-
-// this is how you configure your api
-// We configured the setting withing the package.json file
-// of course, it can be defined in many different ways, e.g.
-// separate configuration files, environment variables, etc.
-const api = composeApi(_b$config.apiSettings);
-
-/**
- * Just a helper function to ask for the account id/address
- */
-function ask() {
-  // inquirer is a pretty useful lib for CLI interaction
-  return inquirer
-    .prompt([
-      {
-        type: 'input',
-        name: 'account',
-        message: 'What\'s the account id or address?'
-      }
-    ])
-}
-
+const {api,askAccount} = require('./helper');
 
 async function listTransactions(account) {
 
@@ -70,6 +46,6 @@ async function listTransactions(account) {
 // Our entry point has to be async, as our subsequent calls are.
 // This pattern keeps your app running until all async calls are executed
 (async () => {
-  const {account} = await ask();
+  const {account} = await askAccount();
   await listTransactions(account);
 })();
