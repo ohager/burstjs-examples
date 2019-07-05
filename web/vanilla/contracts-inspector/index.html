@@ -1,0 +1,68 @@
+<html>
+<link>
+<link rel="stylesheet" href="https://unpkg.com/@blaze/css@5.0.0/dist/blaze.css">
+<link rel="stylesheet" href="css/custom.css">
+<script type="application/javascript"
+        src='https://cdn.jsdelivr.net/npm/@burstjs/core/dist/burstjs.min.js'></script>
+<script type="application/javascript"
+        src='https://cdn.jsdelivr.net/npm/@burstjs/util/dist/burstjs.util.min.js'></script>
+</head>
+<body onload="main()">
+<div id="root" class="u-window-box-medium">
+    <div id="modal">
+        <div aria-hidden class="c-overlay"></div>
+        <div role="dialog" class="o-modal">
+            <div class="c-card">
+                <header class="c-card__header">
+                    <button type="button" class="c-button c-button--close" onclick="modal.close()">&times;</button>
+                    <h2 class="c-heading"></h2>
+                </header>
+                <div class="c-card__body">
+                </div>
+                <footer class="c-card__footer">
+                    <button type="button" class="c-button c-button--brand" onclick="modal.close()">Close</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div class="o-container o-container--large">
+        <div class="c-card">
+            <div role="separator" class="c-card__item c-card__item--divider">
+                Smart Contracts Inspector
+            </div>
+            <div class="c-card__item ">
+                <label class="c-label u-xsmall" for="address-field">Creator</label>
+                <input id="address-field"
+                       class="c-field u-xlarge c-tooltip c-tooltip--top"
+                       placeholder="loading..."
+                       aria-label="The Creator of these contracts"
+                       type="text" disabled>
+            </div>
+            <div class="c-card__body">
+                <table class="c-table">
+                    <caption class="c-table__caption">Available Smart Contracts</caption>
+                    <thead class="c-table__head">
+                    <tr class="c-table__row c-table__row--heading">
+                        <th class="c-table__cell">Id</th>
+                        <th class="c-table__cell">Name</th>
+                        <th class="c-table__cell">Description</th>
+                        <th class="c-table__cell">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="contracts-table-body" class="c-table__body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/ecmascript" src="src/views/view.js"></script>
+<script type="application/ecmascript" src="src/views/detailsAttributesTabView.js"></script>
+<script type="application/ecmascript" src="src/views/detailsCodeTabView.js"></script>
+<script type="application/ecmascript" src="src/views/detailsDataTabView.js"></script>
+<script type="application/ecmascript" src="src/views/detailsView.js"></script>
+<script type="application/ecmascript" src="src/views/contractsView.js"></script>
+<script type="application/ecmascript" src="src/modal.js"></script>
+<script type="application/ecmascript" src="src/main.js"></script>
+</body>
+</html>
