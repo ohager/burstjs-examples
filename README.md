@@ -71,7 +71,7 @@ Examples of Web applications, i.e. apps which run in the browser
 
 Examples of pure HTML, CSS and Javascript (using minified burstjs bundle)
 
-#### Contracts Inspector
+#### [Contracts Inspector](./web/vanilla/contracts-inspector)
 
 > Level: Advanced
 
