@@ -61,3 +61,24 @@ Encrypted messages won't be encrypted
 	- util/convertBurstTimeToDate
 	- util/isBurstAddress
 	- util/convertAddressToNumericId
+	
+	
+## Web
+
+Examples of Web applications, i.e. apps which run in the browser
+
+### Vanilla 
+
+Examples of pure HTML, CSS and Javascript (using minified burstjs bundle)
+
+#### Contracts Inspector
+
+> Level: Advanced
+
+This example lists all Smart Contracts of an account, and allows detailed inspection
+
+##### Used methods/classes:
+	- core/apiCompose
+	- core/api.account.getContractsByAccount
+	- core/ContractHelper
+	- util/convertAddressToNumericId
