@@ -15,3 +15,36 @@ tr.c-table__row:hover {
     font-size: 16px;
     word-break: break-all;
 }
+
+#detail-tabs .contract-data__wrapper {
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#detail-tabs .contract-data__raw {
+    width: 80%;
+    margin-right: 8px;
+}
+
+#detail-tabs .contract-data__raw > div {
+    font-family: monospace;
+    color: darkgray;
+    font-size: 16px;
+    word-break: unset;
+    max-height: 400px;
+    overflow: auto;
+}
+
+#detail-tabs .contract-data__raw span:hover {
+    filter: brightness(85%) !important;
+    background-color: white;
+    cursor: pointer;
+}
+
+#detail-tabs .token {
+    padding: 4px;
+    display: inline-block;
+}
+

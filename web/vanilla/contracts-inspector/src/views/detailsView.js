@@ -20,25 +20,35 @@ class DetailsView extends View {
 
   renderView() {
 
-    // const helper = new b$.ContractHelper(this._contract);
-
-    const attributesTabView = new DetailsAttributesTabView(null, this._contract);
-    const codeTabView = new DetailsCodeTabView(null, this._contract);
-    const dataTabView = new DetailsDataTabView(null, this._contract);
-    return `
-<div id="detail-tabs" role="tablist" class="c-tabs">
-  <div class="c-tabs__nav">
+    const divElement = document.createElement('div');
+    divElement.setAttribute('role', 'tablist');
+    divElement.setAttribute('id', 'detail-tabs');
+    divElement.classList.add('c-tabs');
+    divElement.innerHTML = `<div class="c-tabs__nav">
     <div id="detail-headings" class="c-tabs__headings">
       <button role="tab" class="c-tab-heading c-tab-heading--active">Attributes</button>
       <button role="tab" class="c-tab-heading">Data</button>
       <button role="tab" class="c-tab-heading">Code</button>
     </div>
   </div>
-  <div role="tabpanel" class="c-tabs__tab">${attributesTabView.renderView()}</div>
-  <div role="tabpanel" hidden class="c-tabs__tab">${dataTabView.renderView()}</div>
-  <div role="tabpanel" hidden class="c-tabs__tab">${codeTabView.renderView()}</div>
-</div>
-`
+`;
+    divElement.appendChild(this._getTabPanel(DetailsAttributesTabView, true));
+    divElement.appendChild(this._getTabPanel(DetailsDataTabView));
+    divElement.appendChild(this._getTabPanel(DetailsCodeTabView));
+
+    return divElement
+  }
+
+  _getTabPanel(tabViewClass, isActive = false) {
+    const divElement = document.createElement('div');
+    divElement.setAttribute('role', 'tabpanel');
+    if(!isActive){
+      divElement.setAttribute('hidden', true);
+    }
+    divElement.classList.add('c-tabs__tab');
+    const tabView = new tabViewClass(divElement, this._contract);
+    divElement.appendChild(tabView.renderView());
+    return divElement;
   }
 
   _showTab(index) {
@@ -66,17 +76,10 @@ class DetailsView extends View {
     })
   }
 
-  _onModalClose() {
-    const headings = document.getElementById('detail-headings');
-    const tabs = headings.getElementsByClassName('c-tab-heading');
-    forEachOfElement(tabs, (tab, index) => {
-      tab.removeEventListener('click', this._showTabHandler[index])
-    })
-  }
 
   mount() {
     window.addEventListener('modal:open', this._onModalOpen.bind(this));
-    window.addEventListener('modal:close', this._onModalClose.bind(this));
     window.modal.open(this._contract.name, this.renderView());
   };
+
 }

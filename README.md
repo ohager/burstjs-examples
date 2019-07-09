@@ -20,7 +20,8 @@ There are different scenarios of how to use burstjs available.
 Each is organized in different folders
 
 - cli - BurstJS for command line interface using NodeJS
-- ...TO DO 
+- web - Several Web technologies using BurstJS 
+    - vanilla - The most painful way to build a web app (uses minified burstjs) 
 
 ## Command Line Interface (NodeJS) examples
 
@@ -71,6 +72,8 @@ Examples of Web applications, i.e. apps which run in the browser
 
 Examples of pure HTML, CSS and Javascript (using minified burstjs bundle)
 
+> The not so recommended way of building a web app nowadays.
+
 #### [Contracts Inspector](./web/vanilla/contracts-inspector)
 
 > Level: Advanced
@@ -82,3 +85,4 @@ This example lists all Smart Contracts of an account, and allows detailed inspec
 	- core/api.account.getContractsByAccount
 	- core/ContractHelper
 	- util/convertAddressToNumericId
+	- crypto/hashSHA256
