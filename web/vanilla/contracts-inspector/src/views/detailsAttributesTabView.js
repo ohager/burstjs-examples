@@ -1,3 +1,4 @@
+// nothing burstjs specific here... just mounts the table with the contracts
 class DetailsAttributesTabView extends View {
 
   constructor(parent, contract) {

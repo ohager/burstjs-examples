@@ -9,7 +9,8 @@ function getVariable(position, getterFn) {
   }
 }
 
-
+// This Tab shows the contracts data (variables) in a structured way (8 Byte Blocks represented by Hex Values),
+// and shows the converted values as string, decimal, and ordered hex representation.
 class DetailsDataTabView extends View {
 
   constructor(parent, contract) {

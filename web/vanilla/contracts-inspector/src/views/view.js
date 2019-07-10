@@ -1,3 +1,5 @@
+// I splitted the views in classes, that way I feel that I have more control of the Vanilla Mess
+// At least it remembers me slightly of component driven development - it's far from being satisfactory :/
 class View {
 
   constructor(parentElement) {

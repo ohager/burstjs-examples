@@ -1,3 +1,5 @@
+// I splitted the views in classes, that way I feel that I have more control of the Vanilla Mess
+// At least it remembers me slightly of component driven development
 class ContractsView extends View {
 
   constructor(parent, accountId) {
@@ -6,6 +8,7 @@ class ContractsView extends View {
   }
 
   async mount() {
+    // here we access the globally stored API to get all contracts of a given account
     const {ats: contracts} = await BurstApi.contract.getContractsByAccount(this._contractId);
     this.render(contracts);
   };

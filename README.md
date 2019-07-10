@@ -32,6 +32,11 @@ These are examples using burstjs with NodeJS.
 Simply run, 
 1. `cd cli` (if not already in `./cli`)
 2. `npm i` (installs all dependencies to run the examples)
+3. `node ./<filename>`
+
+Where `filename` is one of 
+- `list-transactions.js`
+- `show-messages.js`
 
 The following examples are available
 
@@ -48,7 +53,7 @@ List the recent transactions of given account and prints in table form to consol
 	- util/isBurstAddress
 	- util/convertAddressToNumericId
 	
-### [Show Messages](./cli/list-transactions.js)
+### [Show Messages](./cli/show-messages.js)
 
 > Level: Basic
 
@@ -77,8 +82,18 @@ Examples of pure HTML, CSS and Javascript (using minified burstjs bundle)
 #### [Contracts Inspector](./web/vanilla/contracts-inspector)
 
 > Level: Advanced
+> Requires solid understanding of Browsers WebAPI, especially DOM 
 
-This example lists all Smart Contracts of an account, and allows detailed inspection
+This example application lists all Smart Contracts of an account, and allows detailed inspection
+
+Run the `index.html` in any static file server.
+
+Using [serve](https://www.npmjs.com/package/serve) may be the easiest way:
+
+1. `npm i -g serve`
+2. `cd ./web/vanilla/contracts-inspector`
+3. `serve`
+4. Open browser at given url, i.e. `http://localhost:5000`
 
 ##### Used methods/classes:
 	- core/apiCompose
