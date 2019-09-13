@@ -9,6 +9,27 @@ tr.c-table__row:hover {
     cursor: pointer;
 }
 
+.action-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.action-buttons i.action {
+    font-size: 1rem;
+    color: darkgray;
+    cursor: pointer;
+}
+
+.action-buttons i.action:hover {
+    color: black;
+}
+
+.action-buttons i.action.busy {
+    cursor: not-allowed;
+    animation: pulse 1s infinite;
+}
+
 #detail-tabs .contract-code {
     font-family: monospace;
     color: darkgray;
@@ -48,3 +69,21 @@ tr.c-table__row:hover {
     display: inline-block;
 }
 
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1.0;
+    }
+
+    50% {
+        transform: scale(0.98);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1.0;
+    }
+}

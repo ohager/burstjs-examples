@@ -1,12 +1,9 @@
-function updateAddress(address) {
-  if (b$util.isBurstAddress(address)) {
-    address = b$util.convertAddressToNumericId(address);
+function getCurrentAccountId() {
+  let accountId = document.getElementById('address-field').value.trim();
+  if (b$util.isBurstAddress(accountId)) {
+    accountId = b$util.convertAddressToNumericId(accountId);
   }
-  fetchContracts(address)
-}
-
-function getCurrentAddress() {
-  return document.getElementById('address-field').value.trim()
+  return accountId;
 }
 
 function updateNetwork(newNodeHost) {
@@ -14,7 +11,7 @@ function updateNetwork(newNodeHost) {
     window.ApiSettings.nodeHost = newNodeHost;
     window.BurstApi = b$.composeApi(window.ApiSettings);
   }
-  const currentAddress = getCurrentAddress();
+  const currentAddress = getCurrentAccountId();
   if(currentAddress && currentAddress.length){
     updateAddress(currentAddress)
   }
@@ -31,17 +28,32 @@ async function fetchContracts(accountId) {
   }
 }
 
+async function onUpdateContractsClick(e){
+  const element = e.target;
+  if(element.classList.contains('busy')){
+    return;
+  }
+  element.classList.add('busy');
+  const currentAccountId = getCurrentAccountId();
+  await fetchContracts(currentAccountId);
+  element.classList.remove('busy');
+}
+
 function main() {
 
   const addressInput = document.getElementById('address-field');
   addressInput.addEventListener('blur', e => {
-    updateAddress(e.target.value)
+    fetchContracts(getCurrentAccountId(e.target.value))
   });
 
   const networkSelector = document.getElementById('network-selector');
   networkSelector.addEventListener('change', e => {
     updateNetwork(e.target.value)
   });
+
+  const updateAction = document.getElementById('update-action');
+  updateAction.addEventListener('click', onUpdateContractsClick);
+
   window.ApiSettings = new b$.ApiSettings(networkSelector.value, "burst");
   window.BurstApi = b$.composeApi(window.ApiSettings);
   window.modal = new Modal();

@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@blaze/css@5.0.0/dist/blaze.css">
     <link rel="stylesheet" href="css/custom.css">
     <!-- Importing the bundles from the CDN -->
+    <script src="https://kit.fontawesome.com/5635c2f757.js"></script>
     <script type="application/javascript"
             src='https://cdn.jsdelivr.net/npm/@burstjs/core/dist/burstjs.min.js'></script>
     <script type="application/javascript"
@@ -36,8 +37,7 @@
             <div class="c-card__item ">
                 <label class="c-label u-xsmall" for="address-field">Network</label>
                 <select id="network-selector" class="c-field">
-                    <option value="http://testnet.burstcoin.network:6876" selected>Common Test Net</option>
-                    <option value="http://at-testnet.burst-alliance.org:6876">AT Test Net</option>
+                    <option value="https://test-burst.megash.it:443" selected>Common Test Net</option>
                     <option value="https://wallet.burst-alliance.org:8125">Main Net</option>
                 </select>
             </div>
@@ -48,10 +48,16 @@
                        placeholder="Enter Creators Burst Address..."
                        aria-label="The Creator of these contracts"
                        type="text"
+                       autocomplete="on"
                 >
 
             </div>
             <div class="c-card__body">
+                <div class="action-buttons">
+                    <span class="c-tooltip c-tooltip--left" aria-label="Update Contracts Table">
+                        <i id="update-action" class="action fas fa-satellite-dish"></i>
+                    </span>
+                </div>
                 <table class="c-table">
                     <caption class="c-table__caption">Available Smart Contracts</caption>
                     <thead class="c-table__head">
