@@ -1,27 +1,49 @@
-
-// We compose the api only once and provide it as global object
-window.BurstApi = b$.composeApi({
-  "nodeHost": "http://testnet.burstcoin.network:6876",
-  "apiRootUrl": "burst"
-});
-
-function setAddress(e){
-  let address = e.target.value;
-  if(b$util.isBurstAddress(address)){
+function updateAddress(address) {
+  if (b$util.isBurstAddress(address)) {
     address = b$util.convertAddressToNumericId(address);
   }
   fetchContracts(address)
 }
 
-function fetchContracts(accountId){
-  const contractsTable = document.getElementById('contracts-table-body');
-  const contracts = new ContractsView(contractsTable, accountId);
-  contracts.mount()
+function getCurrentAddress() {
+  return document.getElementById('address-field').value.trim()
 }
 
-function main(){
+function updateNetwork(newNodeHost) {
+  if (window.ApiSettings.nodeHost !== newNodeHost) {
+    window.ApiSettings.nodeHost = newNodeHost;
+    window.BurstApi = b$.composeApi(window.ApiSettings);
+  }
+  const currentAddress = getCurrentAddress();
+  if(currentAddress && currentAddress.length){
+    updateAddress(currentAddress)
+  }
+}
+
+async function fetchContracts(accountId) {
+  const contractsTable = document.getElementById('contracts-table-body');
+  const contracts = new ContractsView(contractsTable, accountId);
+  try{
+    await contracts.mount()
+  }catch(e){
+    const errorView = new ErrorMessageView(null, e.message);
+    window.modal.open("Oh no!", errorView.renderView())
+  }
+}
+
+function main() {
+
+  const addressInput = document.getElementById('address-field');
+  addressInput.addEventListener('blur', e => {
+    updateAddress(e.target.value)
+  });
+
+  const networkSelector = document.getElementById('network-selector');
+  networkSelector.addEventListener('change', e => {
+    updateNetwork(e.target.value)
+  });
+  window.ApiSettings = new b$.ApiSettings(networkSelector.value, "burst");
+  window.BurstApi = b$.composeApi(window.ApiSettings);
   window.modal = new Modal();
-  const addressInput = document.getElementById('address-field')
-  addressInput.addEventListener('blur', setAddress)
 
 }

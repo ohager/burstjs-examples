@@ -34,6 +34,14 @@
                 Smart Contracts Inspector
             </div>
             <div class="c-card__item ">
+                <label class="c-label u-xsmall" for="address-field">Network</label>
+                <select id="network-selector" class="c-field">
+                    <option value="http://testnet.burstcoin.network:6876" selected>Common Test Net</option>
+                    <option value="http://at-testnet.burst-alliance.org:6876">AT Test Net</option>
+                    <option value="https://wallet.burst-alliance.org:8125">Main Net</option>
+                </select>
+            </div>
+            <div class="c-card__item ">
                 <label class="c-label u-xsmall" for="address-field">Creator</label>
                 <input id="address-field"
                        class="c-field u-xlarge c-tooltip c-tooltip--top"
@@ -41,6 +49,7 @@
                        aria-label="The Creator of these contracts"
                        type="text"
                 >
+
             </div>
             <div class="c-card__body">
                 <table class="c-table">
@@ -66,6 +75,7 @@
 <script type="application/ecmascript" src="src/views/detailsDataTabView.js"></script>
 <script type="application/ecmascript" src="src/views/detailsView.js"></script>
 <script type="application/ecmascript" src="src/views/contractsView.js"></script>
+<script type="application/ecmascript" src="src/views/errorMessageView.js"></script>
 <script type="application/ecmascript" src="src/modal.js"></script>
 <script type="application/ecmascript" src="src/main.js"></script>
 </body>

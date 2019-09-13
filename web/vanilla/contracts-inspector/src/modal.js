@@ -12,7 +12,7 @@ class Modal {
     this._overlayNode.classList.remove(VISIBLE_CLASS_OVERLAY);
     this._dialogNode.classList.remove(VISIBLE_CLASS_DIALOG);
     const cardBody = this._dialogNode.querySelector('.c-card__body');
-    cardBody.removeChild(cardBody.firstElementChild);
+    cardBody.innerHTML = "";
     window.dispatchEvent(new Event('modal:close'))
   }
 
