@@ -1,23 +1,27 @@
 
-// We use a fixed account Id (used by JJOS for his Smart Contract tests on testnet
-const ACCOUNT_ID = '5219831338759933722';
-
 // We compose the api only once and provide it as global object
 window.BurstApi = b$.composeApi({
-  "nodeHost": "http://testnet.getburst.net:6876",
+  "nodeHost": "http://testnet.burstcoin.network:6876",
   "apiRootUrl": "burst"
 });
 
-function initializePage() {
-  // Using the burstjs/util here
-  const account = b$util.convertNumericIdToAddress(ACCOUNT_ID);
-  document.getElementById('address-field').setAttribute('placeholder', account);
-  window.modal = new Modal();
+function setAddress(e){
+  let address = e.target.value;
+  if(b$util.isBurstAddress(address)){
+    address = b$util.convertAddressToNumericId(address);
+  }
+  fetchContracts(address)
+}
+
+function fetchContracts(accountId){
+  const contractsTable = document.getElementById('contracts-table-body');
+  const contracts = new ContractsView(contractsTable, accountId);
+  contracts.mount()
 }
 
 function main(){
-  initializePage();
-  const contractsTable = document.getElementById('contracts-table-body');
-  const contracts = new ContractsView(contractsTable, ACCOUNT_ID);
-  contracts.mount()
+  window.modal = new Modal();
+  const addressInput = document.getElementById('address-field')
+  addressInput.addEventListener('blur', setAddress)
+
 }

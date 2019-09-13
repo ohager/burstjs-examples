@@ -10,10 +10,22 @@ class View {
     throw new Error('Override me!')
   }
 
+  removeChildren() {
+    const parent = this.parentElement;
+    let child = parent.lastElementChild;
+    while (child) {
+      parent.removeChild(child);
+      child = parent.lastElementChild;
+    }
+  }
+
   render(props) {
+    this.removeChildren();
     const view = this.renderView(props);
     if (Array.isArray(view)) {
-      view.forEach(el => {this.parentElement.append(el)})
+      view.forEach(el => {
+        this.parentElement.append(el)
+      })
     } else {
       this.parentElement.append(view)
     }

@@ -16,7 +16,7 @@ class ContractsView extends View {
   // Override from View!
   renderView(contracts) {
     let rows = [];
-    for (let i = 0; i < contracts.length - 4; ++i) {
+    for (let i = 0; i < contracts.length; ++i) {
       rows.push(this._createContractRow(contracts[i]));
     }
     return rows;
