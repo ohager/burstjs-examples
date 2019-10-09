@@ -17,20 +17,19 @@ async function showMessages(account) {
 			TransactionType.Arbitrary,
 			TransactionArbitrarySubtype.Message
 			);
-		
+
 		// now we map the fields we want to print as a table to console then
 		const mappedTransactions = transactions.map(t => ({
 			recipient: t.recipientRS,
 			message: getMessageText(t),
 			date: convertBurstTimeToDate(t.blockTimestamp)
 		}));
-		
+
 		console.table(mappedTransactions, ['recipient', 'message', 'date'])
 	} catch (e) {
 		handleApiError(e)
 	}
 }
-
 
 (async () => {
 	const {account} = await askAccount();

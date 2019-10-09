@@ -31,8 +31,9 @@
   },
   "homepage": "https://github.com/ohager/burstjs-examples#readme",
   "dependencies": {
-    "@burstjs/core": "^0.3.0",
-    "@burstjs/util": "^0.3.0",
+    "@burstjs/core": "^0.3.1",
+    "@burstjs/crypto": "^0.3.1",
+    "@burstjs/util": "^0.3.1",
     "console.table": "^0.10.0",
     "inquirer": "^6.4.1"
   }
