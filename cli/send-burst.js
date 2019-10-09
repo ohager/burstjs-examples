@@ -1,4 +1,4 @@
-const {BurstService} = require("@burstjs/core");
+const {BurstService, composeApi} = require("@burstjs/core");
 const {generateMasterKeys, getAccountIdFromPublicKey} = require("@burstjs/crypto");
 const {convertNumberToNQTString, convertNumericIdToAddress} = require("@burstjs/util");
 const {signAndBroadcastTransaction} = require("@burstjs/core/out/internal");
@@ -41,38 +41,6 @@ function confirm({recipientId, recipientAddress}) {
   }])
 }
 
-async function send({
-                      amountPlanck,
-                      feePlanck,
-                      senderPublicKey,
-                      senderPrivateKey,
-                      recipientId,
-                      recipientPublicKey,
-                      deadline
-                    }) {
-  let parameters = {
-    amountNQT: amountPlanck,
-    publicKey: senderPublicKey,
-    recipient: recipientId,
-    recipientPublicKey: recipientPublicKey,
-    feeNQT: feePlanck,
-    deadline: 1440,
-  };
-
-  const service = new BurstService({
-    apiRootUrl: '/burst',
-    nodeHost: 'http://testnet.burstcoin.network:6876',
-  });
-
-  const {unsignedTransactionBytes: unsignedHexMessage} = await service.send('sendMoney', parameters);
-
-  return signAndBroadcastTransaction({
-    senderPublicKey,
-    senderPrivateKey,
-    unsignedHexMessage
-  }, service);
-}
-
 async function sendBurst({amount, publickey, passphrase}) {
   try {
     const recipientId = getAccountIdFromPublicKey(publickey);
@@ -85,13 +53,18 @@ async function sendBurst({amount, publickey, passphrase}) {
       return
     }
 
-    await send({
+    const api = composeApi({
+      apiRootUrl: '/burst',
+      nodeHost: 'http://testnet.burstcoin.network:6876',
+    });
+
+    await api.transaction.sendAmountToSingleRecipient({
       amountPlanck: convertNumberToNQTString(amount),
       feePlanck: convertNumberToNQTString(0.1),
       senderPublicKey: senderKeys.publicKey,
       senderPrivateKey: senderKeys.signPrivateKey,
       recipientId: recipientId,
-      recipientPublicKey: publickey,
+      recipientPublicKey: publickey, //
     });
 
   } catch (e) {
