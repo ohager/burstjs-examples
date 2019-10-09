@@ -13,7 +13,6 @@
             accountId = null
         }
     }
-
 </script>
 
 <svelte:window on:keydown={handleKeydown}></svelte:window>
@@ -58,7 +57,7 @@
         border-radius: 4px;
     }
 </style>
-<!--//16107620026796983538-->
+
 <main>
     <h1 class="dropshadow">Howdy, DevCamp 2019</h1>
     {#if !accountId }
