@@ -104,7 +104,7 @@ function main() {
   listenAndValidate('address-field')
   listenAndValidate('message-field')
 
-  window.ApiSettings = new b$.ApiSettings(networkSelector.value, ApiVersion.V1, {});
+  window.ApiSettings = new b$.ApiSettings(networkSelector.value);
   window.BurstApi = b$.composeApi(window.ApiSettings);
 
 }

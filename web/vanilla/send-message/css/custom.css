@@ -26,6 +26,9 @@ body {
     border-radius: 4px;
 }
 
+.c-alerts {
+    width: fit-content;
+}
 .c-alert--error {
     background-color: #f44336;
     color: #fff;
