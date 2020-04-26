@@ -19,11 +19,11 @@ class DetailsDataTabView extends View {
   }
 
   _tokenizeMachinedata() {
-    const VariableLength = b$.ContractHelper.VARIABLE_LENGTH;
+    const VariableLength = 16; //b$contracts.ContractDataView.VariableLength;
     // The contract helper is your friend, if you want access variables the easy way
     // The data in the contract is stored in 8 byte blocks (expressed by Hex Values) and in little endian order
     // The helper not only converts to big endian order, but also converts into decimal, or tries to convert into string format
-    const helper = new b$.ContractHelper(this._contract);
+    const helper = new b$contracts.ContractDataView(this._contract);
     const {machineData} = this._contract;
     const machineDataTokens = [];
 
