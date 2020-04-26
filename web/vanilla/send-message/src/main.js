@@ -14,7 +14,32 @@ function getMessage() {
   return document.getElementById('message-field').value.trim();
 }
 
+function hideMessage() {
+  document.getElementById('success-message').setAttribute('hidden', '');
+}
+
+function hideError() {
+  document.getElementById('error-message').setAttribute('hidden', '');
+}
+
+function showError(message){
+  const errorMessage =document.getElementById('error-message')
+  errorMessage.textContent = message;
+  errorMessage.removeAttribute('hidden');
+}
+
+function showSuccess(message){
+  const successMessage =document.getElementById('success-message')
+  successMessage.textContent = message;
+  successMessage.removeAttribute('hidden');
+}
+
+
 function validateForm() {
+
+  hideError()
+  hideMessage()
+
   const recipientId = getRecipientAccountId()
   const passphrase = getPassphrase()
   const message = getMessage()
@@ -49,13 +74,11 @@ async function sendMessage() {
     senderPrivateKey: keys.signPrivateKey,
     senderPublicKey: keys.publicKey
   }
-
-  console.log('params', params)
-
   try {
     await window.BurstApi.message.sendMessage(params)
+    showSuccess('Message sent successfully')
   } catch (e) {
-    console.error('Oh Snap', e.message)
+    showError(e.message)
   }
 }
 

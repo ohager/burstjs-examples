@@ -17,19 +17,20 @@ body {
     margin-left: 1rem;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1.0;
-    }
+.c-alert {
+    background-color: #96a8b2;
+    color: #fff;
+    position: relative;
+    margin: 0 0 1em;
+    padding: 1em 3em 1em 1em;
+    border-radius: 4px;
+}
 
-    50% {
-        transform: scale(0.98);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1.0;
-    }
+.c-alert--error {
+    background-color: #f44336;
+    color: #fff;
+}
+.c-alert--success {
+    background-color: #4caf50;
+    color: #fff;
 }
