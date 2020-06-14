@@ -37,11 +37,23 @@ tr.c-table__row:hover {
     animation: pulse 1s infinite;
 }
 
+.o-modal {
+    max-height: 80vh;
+}
+
+.c-tabs__tab[role=tabpanel] {
+    position: relative;
+    max-height: 500px;
+    overflow: auto;
+}
+
 #detail-tabs .contract-code {
     font-family: monospace;
     color: darkgray;
     font-size: 16px;
     word-break: break-all;
+    max-height: 400px;
+    overflow: auto;
 }
 
 #detail-tabs .contract-data__wrapper {
@@ -69,6 +81,10 @@ tr.c-table__row:hover {
     filter: brightness(85%) !important;
     background-color: white;
     cursor: pointer;
+}
+
+#detail-tabs .contract-code {
+    overflow: auto;
 }
 
 #detail-tabs .token {
