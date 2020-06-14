@@ -4,7 +4,7 @@
 > Level: Advanced
 > This is a larger code base of a useful tool, which requires solid understanding of Browsers WebAPI, especially DOM 
 
-This example application lists all Smart Contracts of an account, and allows detailed inspection
+This example application lists all [Smart Contracts](https://github.com/burst-apps-team/blocktalk) of an account, and allows detailed inspection
 
 ![Screenshot](../../../assets/inspector.png)
 
