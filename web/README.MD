@@ -18,5 +18,5 @@ Examples using SvelteJS
 
 > The hipster way of building a web app nowadays.
 
-- [Account Balance](./svelte/devcamp/README.MD) - A simple app showing an accounts balance (Level: Basic)
+- [Account Balance](./svelte/devcamp/README.md) - A simple app showing an accounts balance (Level: Basic)
 
