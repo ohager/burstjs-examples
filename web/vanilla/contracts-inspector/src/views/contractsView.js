@@ -15,11 +15,24 @@ class ContractsView extends View {
 
   // Override from View!
   renderView(contracts) {
-    let rows = [];
-    for (let i = 0; i < contracts.length; ++i) {
-      rows.push(this._createContractRow(contracts[i]));
-    }
-    return rows;
+    // let rows = [];
+    // for (let i = 0; i < contracts.length; ++i) {
+    //   rows.push(this._createContractRow(contracts[i]));
+    // }
+    // return rows;
+    return contracts.length === 0
+      ? this._createEmptyRow()
+      : contracts.map(this._createContractRow.bind(this))
+  }
+
+
+  _createEmptyRow() {
+    const rowNode = document.createElement('tr');
+    rowNode.setAttribute('class', 'c-table__row');
+    rowNode.innerHTML = `
+    <td class="c-table__cell">No contract found</td>
+    `;
+    return rowNode;
   }
 
   _createContractRow(contract) {

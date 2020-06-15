@@ -39,10 +39,32 @@ async function onUpdateContractsClick(e){
   element.classList.remove('busy');
 }
 
+function parseArguments(){
+  const query = window.location.search
+  if(!query.length) return {}
+
+  const arguments = query.substr(1).split('&')
+  return arguments.reduce( (obj, arg) => {
+    const strings = arg.split('=');
+    obj[strings[0]] = strings[1] || true
+    return obj
+  }, {})
+}
+
+function applyQueryArguments() {
+  const args = parseArguments()
+  if(args.address){
+    const addressField = document.getElementById('address-field')
+    addressField.value = args.address;
+    document.getElementById('address-button').click()
+  }
+
+}
+
 function main() {
 
-  const addressInput = document.getElementById('address-field');
-  addressInput.addEventListener('blur', e => {
+  const addressInput = document.getElementById('address-button');
+  addressInput.addEventListener('click', e => {
     fetchContracts(getCurrentAccountId(e.target.value))
   });
 
@@ -58,4 +80,5 @@ function main() {
   window.BurstApi = b$.composeApi(window.ApiSettings);
   window.modal = new Modal();
 
+  applyQueryArguments()
 }

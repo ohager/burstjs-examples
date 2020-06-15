@@ -47,6 +47,10 @@ tr.c-table__row:hover {
     overflow: auto;
 }
 
+#address-button {
+    cursor: pointer;
+}
+
 #detail-tabs .contract-code {
     font-family: monospace;
     color: darkgray;
@@ -116,7 +120,7 @@ tr.c-table__row:hover {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 4rem;
+    padding-left: 1rem;
     background: #00579d;
     color: white;
     width: 100%;
@@ -131,6 +135,7 @@ tr.c-table__row:hover {
     padding: 0.5rem;
     position: fixed;
     display: flex;
-    align-items: flex-end;
-    bottom: 0
+    justify-content: flex-end;
+    bottom: 0;
+    width: 100%;
 }
