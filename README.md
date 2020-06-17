@@ -15,7 +15,7 @@ Please, consider the [Online Documentation](https://burst-apps-team.github.io/ph
 First, you need to clone the remote repository to your machine, doing
 
 ```
-git clone https://github.com/ohager/burstjs-examples.git`
+git clone https://github.com/ohager/burstjs-examples.git
 ```
 
 There are different scenarios of how to use burstjs available. 
