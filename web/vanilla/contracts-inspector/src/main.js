@@ -15,10 +15,6 @@ function updateNetwork(newNodeHost) {
     window.ApiSettings.nodeHost = newNodeHost;
     window.BurstApi = b$.composeApi(window.ApiSettings);
   }
-  const currentAddress = getCurrentAccountId();
-  if (currentAddress && currentAddress.length) {
-    updateAddress(currentAddress)
-  }
 }
 
 async function fetchContracts(accountId) {
@@ -57,14 +53,17 @@ function parseArguments() {
 
 function applyQueryArguments() {
   const args = parseArguments()
+
+  const networkSelector = document.getElementById('network-selector');
+  networkSelector.value = args.testnet ? TestNetUrl : MainNetUrl
+  networkSelector.dispatchEvent(new Event('change'));
+
   if (args.address) {
     const addressField = document.getElementById('address-field')
     addressField.value = args.address;
     document.getElementById('address-button').click()
   }
 
-  const networkSelector = document.getElementById('network-selector');
-  networkSelector.value = args.testnet ? TestNetUrl : MainNetUrl
 }
 
 function main() {

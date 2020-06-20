@@ -19,6 +19,13 @@ Using [serve](https://www.npmjs.com/package/serve) may be the easiest way:
 3. `serve`
 4. Open browser at given url, i.e. `http://localhost:5000`
 
+Additional Url parameters
+
+- address: A burst address or account id
+- testnet: If passed the testnet will be chosen, otherwise mainnet
+
+``
+
 ##### Used methods/classes:
 	- core/apiCompose
 	- core/api.account.getContractsByAccount
