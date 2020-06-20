@@ -1,3 +1,7 @@
+const TestNetUrl = "https://testnet-2.burst-alliance.org:6876"
+const MainNetUrl = "https://wallet.burst-alliance.org:8125"
+
+
 function getCurrentAccountId() {
   let accountId = document.getElementById('address-field').value.trim();
   if (b$util.isBurstAddress(accountId)) {
@@ -12,7 +16,7 @@ function updateNetwork(newNodeHost) {
     window.BurstApi = b$.composeApi(window.ApiSettings);
   }
   const currentAddress = getCurrentAccountId();
-  if(currentAddress && currentAddress.length){
+  if (currentAddress && currentAddress.length) {
     updateAddress(currentAddress)
   }
 }
@@ -20,17 +24,17 @@ function updateNetwork(newNodeHost) {
 async function fetchContracts(accountId) {
   const contractsTable = document.getElementById('contracts-table-body');
   const contracts = new ContractsView(contractsTable, accountId);
-  try{
+  try {
     await contracts.mount()
-  }catch(e){
+  } catch (e) {
     const errorView = new ErrorMessageView(null, e.message);
     window.modal.open("Oh no!", errorView.renderView())
   }
 }
 
-async function onUpdateContractsClick(e){
+async function onUpdateContractsClick(e) {
   const element = e.target;
-  if(element.classList.contains('busy')){
+  if (element.classList.contains('busy')) {
     return;
   }
   element.classList.add('busy');
@@ -39,12 +43,12 @@ async function onUpdateContractsClick(e){
   element.classList.remove('busy');
 }
 
-function parseArguments(){
+function parseArguments() {
   const query = window.location.search
-  if(!query.length) return {}
+  if (!query.length) return {}
 
   const arguments = query.substr(1).split('&')
-  return arguments.reduce( (obj, arg) => {
+  return arguments.reduce((obj, arg) => {
     const strings = arg.split('=');
     obj[strings[0]] = strings[1] || true
     return obj
@@ -53,12 +57,14 @@ function parseArguments(){
 
 function applyQueryArguments() {
   const args = parseArguments()
-  if(args.address){
+  if (args.address) {
     const addressField = document.getElementById('address-field')
     addressField.value = args.address;
     document.getElementById('address-button').click()
   }
 
+  const networkSelector = document.getElementById('network-selector');
+  networkSelector.value = args.testnet ? TestNetUrl : MainNetUrl
 }
 
 function main() {
