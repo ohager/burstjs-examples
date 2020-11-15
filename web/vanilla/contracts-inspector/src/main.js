@@ -1,6 +1,5 @@
-const TestNetUrl = "https://testnet-2.burst-alliance.org:6876"
-const MainNetUrl = "https://wallet.burst-alliance.org:8125"
-
+const TestNetUrl = "https://testnet.burstcoin.network:6876"
+const MainNetUrl = "https://wallet.burstcoin.ro"
 
 function getCurrentAccountId() {
   let accountId = document.getElementById('address-field').value.trim();
@@ -52,10 +51,11 @@ function parseArguments() {
 }
 
 function applyQueryArguments() {
+
   const args = parseArguments()
 
   const networkSelector = document.getElementById('network-selector');
-  networkSelector.value = args.testnet ? TestNetUrl : MainNetUrl
+  networkSelector.value = args.testnet === true ? TestNetUrl : MainNetUrl
   networkSelector.dispatchEvent(new Event('change'));
 
   if (args.address) {
