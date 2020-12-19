@@ -2,10 +2,12 @@ const api = require('./api');
 const askAccount = require('./askAccount');
 const getAccountId = require('./getAccountId');
 const handleApiError = require('./handleApiError');
+const ensureAccountId = require('./ensureAccountId');
 
 module.exports = {
 	api,
 	askAccount,
 	getAccountId,
-	handleApiError
+	handleApiError,
+	ensureAccountId
 };
