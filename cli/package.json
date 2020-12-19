@@ -11,7 +11,7 @@
   },
   "_b$config": {
     "apiSettings": {
-      "nodeHost": "https://testnet-2.burst-alliance.org:6876"
+      "nodeHost": "https://testnet.burstcoin.network:6876"
     }
   },
   "repository": {
@@ -30,10 +30,10 @@
   },
   "homepage": "https://github.com/ohager/burstjs-examples#readme",
   "dependencies": {
-    "@burstjs/core": "^0.5.0-beta.7",
-    "@burstjs/crypto": "^0.5.0-beta.7",
-    "@burstjs/util": "^0.5.0-beta.7",
+    "@burstjs/core": "latest",
+    "@burstjs/crypto": "latest",
+    "@burstjs/util": "latest",
     "console.table": "^0.10.0",
-    "inquirer": "^6.4.1"
+    "inquirer": "^7.3.3"
   }
 }
