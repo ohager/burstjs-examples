@@ -5,13 +5,12 @@ const {api, ensureAccountId, askAccount} = require("./helper");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 /**
- * das ist die rekursive Funktion, die nach und nach alle tx in einem Array sammelt
- * sie ist asynchron, also nebenlaeufig, und erwartet ein JSON objekt der folgenden Struktur
- * @param accountId Die AccountId
- * @param firstIndex (optional, mit anfangswert 0) der erste index
- * @param lastIndex (optional, mit anfangswert 499) der letzte index
- * @param allTransactions (optional, mit einem leeren Array als Anfangswert) das Array brauchen wor als "Sammler" fuer die tx
- * @returns {Promise<*[]>} Die Funktion gibt ein Promise mit einem Array zurueck. Das Array wird _alle_ transaktionen beinhalten
+ * This is the recursive function that calls itself as long an account has at least 500 transactions
+ * @param accountId
+ * @param firstIndex (optional) the start index where to start, it always referes to the most recent tx
+ * @param lastIndex (optional) the last index (BRS returns at maximum 500 tx per call)
+ * @param allTransactions (optional,) this is our collector array, where we gather the chunked tx
+ * @returns {Promise<*[]>} If all transactions were fetched it returns an array with _all_ tx
  */
 async function getTransactions({
                                    accountId,
