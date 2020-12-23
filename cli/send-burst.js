@@ -1,7 +1,6 @@
-const {BurstService, composeApi} = require("@burstjs/core");
+const {composeApi} = require("@burstjs/core");
 const {generateMasterKeys, getAccountIdFromPublicKey} = require("@burstjs/crypto");
 const {convertNumberToNQTString, convertNumericIdToAddress} = require("@burstjs/util");
-const {signAndBroadcastTransaction} = require("@burstjs/core/out/internal");
 
 const {handleApiError} = require('./helper');
 

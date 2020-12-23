@@ -1,9 +1,6 @@
 const {isBurstAddress, convertAddressToNumericId, BurstValue} = require("@burstjs/util");
 const {api, askAccount, handleApiError} = require('./helper');
 
-// this is not recommended, but it may happen that the SSL cert of a peer is not
-// completely valid
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 async function listTransactions(account) {
 
