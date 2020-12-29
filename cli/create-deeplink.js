@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const {convertHexEndianess} = require("@burstjs/util");
 const {BurstValue, convertNumericIdToAddress} = require("@burstjs/util");
 const {handleApiError, api} = require('./helper');
 
@@ -50,16 +51,16 @@ function mountLegacyDeeplink({recipient, amount, fee, message, isTextMessage = t
 
 const redirectable = targetUrl => "https://burst-balance-alert.now.sh/api/redirect?url=" + targetUrl
 
-
 async function createDeeplink(answers) {
     try {
         const {standard} = await api.network.getSuggestedFees()
         const link = mountLegacyDeeplink({
             recipient: answers.recipient,
             amount: BurstValue.fromBurst(answers.amount),
+
             fee: BurstValue.fromPlanck(standard.toString(10)),
             message: answers.message || undefined,
-            isTextMessage: answers.isTextMessage,
+            messageIsText: answers.messageIsText,
         })
 
         console.info('Pure deeplink -', link)
@@ -68,6 +69,11 @@ async function createDeeplink(answers) {
         handleApiError(e)
     }
 }
+
+function createContractHexMessage() {
+    convertHexEndianess(hex)
+}
+
 
 (async () => {
     const answers = await askInformation();
