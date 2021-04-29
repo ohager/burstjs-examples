@@ -33,6 +33,7 @@
     "@burstjs/core": "latest",
     "@burstjs/crypto": "latest",
     "@burstjs/util": "latest",
+    "@burstjs/http": "latest",
     "cli-progress": "^3.9.0",
     "console.table": "^0.10.0",
     "inquirer": "^7.3.3",

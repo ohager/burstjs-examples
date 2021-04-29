@@ -3,6 +3,7 @@ const {join} = require('path')
 const propertiesToJSON = require("properties-to-json");
 const {api} = require('./helper');
 const {SingleBar} = require('cli-progress')
+const {HttpClientFactory} = require('@burstjs/http')
 
 function askBrsPropertiesPath() {
     return inquirer
@@ -29,6 +30,18 @@ async function loadBootstrapPeers(path) {
     return props['P2P.BootstrapPeers'].replace(/\s/ig, '').split(';')
 }
 
+
+async function getPeerInfoFromP2P(peer) {
+    const client = HttpClientFactory.createHttpClient(
+        `http://${peer}:8123`,
+        {
+            timeout: 2000,
+            headers: {'User-Agent': 'BRS/3.0.0'}
+        })
+    const {response} = await client.post('', {protocol: 'B1', requestType: 'getInfo'})
+    return response.version
+}
+
 (async () => {
     try {
         // const {path} = await askBrsPropertiesPath();
@@ -41,7 +54,11 @@ async function loadBootstrapPeers(path) {
         for (let i = 0; i < peers.length; i++) {
             const p = peers[i];
             try {
-                const {version} = await api.network.getPeer(p)
+                const peerInfo = await api.network.getPeer(p)
+                let version = peerInfo.version
+                if (!version) {
+                    version = await getPeerInfoFromP2P(p)
+                }
                 results.push({ok: 'X', ip: p, version})
             } catch (e) {
                 results.push({ok: '-', ip: p, version: ''})
