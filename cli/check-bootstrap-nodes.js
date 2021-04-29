@@ -42,16 +42,18 @@ async function loadBootstrapPeers(path) {
             const p = peers[i];
             try {
                 const {version} = await api.network.getPeer(p)
-                results.push({ok: '✅', ip: p, version})
+                results.push({ok: 'X', ip: p, version})
             } catch (e) {
-                results.push({ok: 'X', ip: p, version: ''})
+                results.push({ok: '-', ip: p, version: ''})
             }
             progressBar.increment()
         }
         progressBar.stop()
         console.table(results, ['ok', 'ip', 'version'])
-        const goodPeers = results.filter(({ok}) => ok !== 'X').map(({ip}) => ip)
-        console.log('Good Peers', goodPeers.join(';'))
+        const reachablePeers = results.filter(({ok}) => ok !== '-').map(({ip}) => ip)
+        const v3Peers = results.filter(({version}) => version.startsWith('v3')).map(({ip}) => ip)
+        console.log('Reachable Peers', reachablePeers.join(';'))
+        console.log('V3+ Peers', v3Peers.join(';'))
     } catch (e) {
         console.error(e)
     }
