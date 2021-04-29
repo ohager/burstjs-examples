@@ -11,7 +11,7 @@
   },
   "_b$config": {
     "apiSettings": {
-      "nodeHost": "https://testnet.burstcoin.network:6876"
+      "nodeHost": "https://brazil.signum.network"
     }
   },
   "repository": {
@@ -33,7 +33,9 @@
     "@burstjs/core": "latest",
     "@burstjs/crypto": "latest",
     "@burstjs/util": "latest",
+    "cli-progress": "^3.9.0",
     "console.table": "^0.10.0",
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "properties-to-json": "^0.2.1"
   }
 }
