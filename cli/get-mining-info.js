@@ -26,7 +26,7 @@ async function getMiningInfo() {
         const avgCommitment = BurstValue.fromPlanck(averageCommitmentNQT)
 
         console.log("Current Block Reward:", blockReward.toString())
-        console.log("Avg. Commitment per TiB:", avgCommitment.toString())
+        console.log("Ag. Commitment per TiB:", avgCommitment.toString())
     } catch (e) {
         handleApiError(e)
     }

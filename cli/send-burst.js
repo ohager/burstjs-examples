@@ -53,8 +53,7 @@ async function sendBurst({amount, publickey, passphrase}) {
     }
 
     const api = composeApi({
-      apiRootUrl: '/burst',
-      nodeHost: 'http://testnet.burstcoin.network:6876',
+      nodeHost: 'http://testnet.signumcoin.network:6876',
     });
 
     await api.transaction.sendAmountToSingleRecipient({
