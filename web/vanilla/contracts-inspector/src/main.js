@@ -1,5 +1,5 @@
-const TestNetUrl = "https://testnet.burstcoin.network:6876"
-const MainNetUrl = "https://wallet.burstcoin.ro"
+const TestNetUrl = "https://europe3.testnet.signum.network"
+const MainNetUrl = "https://europe.signum.network"
 
 function getCurrentAccountId() {
   let accountId = document.getElementById('address-field').value.trim();

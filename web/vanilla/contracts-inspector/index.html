@@ -26,10 +26,10 @@
 <body onload="main()">
 
 <div id="header">
-    <a href="https://burst-coin.org" target="_blank">
-        <img src="img/burst-white.svg" height="64" alt="Burstcoin Logo"/>
+    <a href="https://signum.network" target="_blank">
+        <img src="img/signum-logo.svg" height="64" alt="Signum Logo"/>
     </a>
-    <div>Smart Contract Pioneer since 2014</div>
+    <div class="ml">Smart Contract Pioneer since 2014</div>
     <a href="https://github.com/ohager/burstjs-examples" target="_blank" class="github-corner"
        aria-label="View source on GitHub">
         <svg width="62" height="62" viewBox="0 0 250 250"
@@ -64,22 +64,28 @@
     <div class="o-container o-container--large">
         <div class="c-card">
             <div role="separator" class="c-card__item c-card__item--divider">
-                Burst Smart Contracts Inspector
+                Signum Smart Contracts Inspector
             </div>
             <div class="c-card__item ">
                 <div class="center">
-                    With this tool you can inspect Smart Contracts on the Burstcoin Blockchain.
+                    With this tool you can inspect Smart Contracts on the Signum Blockchain Platform.
                     Simply enter the creator address and - if available - select one of the contracts to view
                     further details and even inspect the data pages/values.
                 </div>
-                <small style="float: right"><a href="https://github.com/burst-apps-team/blocktalk" target="_blank">Learn
-                    more about Burstcoin Smart Contracts</a></small>
+                <small style="float: right"><a href="https://github.com/signum-network/signum-smartj" target="_blank">Learn
+                    more about Signum Smart Contracts</a></small>
             </div>
             <div class="c-card__item ">
                 <label class="c-label u-xsmall" for="address-field">Network</label>
                 <select id="network-selector" class="c-field">
-                    <option value="https://wallet.burstcoin.ro">Main Net</option>
-                    <option value="http://localhost:6876">Test Net</option>
+                    <option value="https://europe.signum.network">Europe Main Net</option>
+                    <option value="https://canada.signum.network">Canada Main Net</option>
+                    <option value="https://us-east.signum.network">US Main Net</option>
+                    <option value="https://brazil.signum.network">Brazil Main Net</option>
+                    <option value="https://australia.signum.network">Australia Main Net</option>
+                    <option value="http://localhost:8125">Local Main Net</option>
+                    <option value="https://europe3.testnet.signum.network">Europe Test Net</option>
+                    <option value="http://localhost:6876">Local Test Net</option>
                 </select>
             </div>
             <div class="c-card__item">
@@ -88,7 +94,7 @@
                     <div class="o-field">
                         <input id="address-field"
                                class="c-field c-tooltip c-tooltip--top u-xlarge"
-                               placeholder="Enter Creators Burst Address or Id"
+                               placeholder="Enter Creators Account Address or Id"
                                aria-label="The Creator of these contracts"
                                type="text"
                                autocomplete="on"
@@ -122,8 +128,11 @@
 </div>
 
 <div id="footer">
-    <a href="https://burst-apps-team.github.io/phoenix/" target="_blank">
-        <img src="img/burst-js.svg" height="32" alt="Powered by BurstJS">
+    <a href="https://signum.network" target="_blank">
+        <img src="img/powered.svg" height="32" alt="Powered by Signum">
+    </a>
+    <a href="https://github.com/signum-network/signumjs" target="_blank">
+        <img src="img/signumjs.svg" height="36" alt="Powered by SignumJS">
     </a>
 </div>
 
